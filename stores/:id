@@ -11,9 +11,9 @@
                     <img src="{{alt_store_front_url}}" style="{{show_main_image}}" class="details_image" />
                     <p class="colored_link" style="{{phone_show}}">Phone</p>
                     <a class="side_link" style="{{phone_show}}" href="tel:{{phone}}">{{phone}}</a>
-                    <p class="colored_link" style="">Address</p>
+                    <p class="colored_link" style="{{address_show}}">Address</p>
                     <p class="side_link">
-                        8982 Washington Blvd, Pico Rivera, CA 90660
+                       {{unit}}
                     </p>
                     <a class="main_btn animated_btn" href="{{website}}" target="_blank" style="{{show}}">Visit Website</a>
                 </div>
