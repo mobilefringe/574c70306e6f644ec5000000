@@ -63,7 +63,7 @@
 <body>
     <header class="main_container main_nav">
         <div class="position_relative">
-            <img src="////codecloud.cdn.speedyrails.net/sites/57f2a8246e6f645d03010000/image/png/1463501219000/open_menu.png" class="open_menu visible_phone" alt="open menu">
+            <img src="//codecloud.cdn.speedyrails.net/sites/57f2a8246e6f645d03010000/image/png/1463501219000/open_menu.png" class="open_menu visible_phone" alt="open menu">
             <ul class="mobile_menu visible_phone">
                 <li><a href="/stores">DIRECTORY</a></li>
                 <li><a href="/events-and-promotions">EVENTS & PROMOTIONS</a></li>
