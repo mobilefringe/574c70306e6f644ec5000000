@@ -7,7 +7,7 @@
     <div class="details_row">
         <div class="details_col_3 hidden_phone">
            
-            <img id="side_image" src="//assets.codecloudapp.com/sites/57f2a8246e6f645d03010000/image/jpeg/undefined/dgvr_440x1200_side_events.jpg" />
+            <img id="side_image" src="//codecloud.cdn.speedyrails.net/sites/57f2a8246e6f645d03010000/image/jpeg/undefined/dgvr_440x1200_side_events.jpg" />
            
         </div>
         <div class="details_col_9">
@@ -27,13 +27,13 @@
         var pathArray = window.location.pathname.split( '/' );
         var slug = pathArray[pathArray.length-1];
          if (slug == "pico-privacy-policy"){
-           $('#side_image').attr('src', "//assets.codecloudapp.com/sites/57f2a8246e6f645d03010000/image/jpeg/undefined/prtc_440x1200_side_drinking.jpg")
+           $('#side_image').attr('src', "//codecloud.cdn.speedyrails.net/sites/57f2a8246e6f645d03010000/image/jpeg/undefined/prtc_440x1200_side_drinking.jpg")
         }
          if (slug == "pico-contact-us"){
-           $('#side_image').attr('src', "//assets.codecloudapp.com/sites/57f2a8246e6f645d03010000/image/jpeg/undefined/prtc_440x1200_side_drinking.jpg")
+           $('#side_image').attr('src', "//codecloud.cdn.speedyrails.net/sites/57f2a8246e6f645d03010000/image/jpeg/undefined/prtc_440x1200_side_drinking.jpg")
         }
         if (slug == "pico-services"){
-           $('#side_image').attr('src', "//assets.codecloudapp.com/sites/57f2a8246e6f645d03010000/image/jpeg/undefined/prtc_440x1200_side_drinking.jpg")
+           $('#side_image').attr('src', "//codecloud.cdn.speedyrails.net/sites/57f2a8246e6f645d03010000/image/jpeg/undefined/prtc_440x1200_side_drinking.jpg")
         }
         prefix = get_prefix();
         $('#top_banner').addClass(slug)
