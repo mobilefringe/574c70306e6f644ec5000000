@@ -5,8 +5,8 @@ $animation_color: #000;
 
 @font-face { 
     font-family: Avenir-Heavy; 
-    src: url('//codecloud.cdn.speedyrails.net/sites/57f2a8246e6f645d03010000/font/truetype/1462834422000/Avenir-Heavy.ttf') format('truetype');
-    src: url('//codecloud.cdn.speedyrails.net/sites/57f2a8246e6f645d03010000//1463611310000/Avenir-Heavy.woff') format('woff');
+    src: url('https://codecloud.cdn.speedyrails.net/sites/57f2a8246e6f645d03010000/font/truetype/1462834422000/Avenir-Heavy.ttf') format('truetype');
+    src: url('https://codecloud.cdn.speedyrails.net/sites/57f2a8246e6f645d03010000//1463611310000/Avenir-Heavy.woff') format('woff');
 }
 
 @font-face { 
