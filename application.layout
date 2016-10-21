@@ -112,7 +112,7 @@
                     <div class="dropdown">
                         <a href="#" type="button" id="dropdownMenuCenterInfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Center Information</a>
                         <ul class="dropdown-menu center_info_dd" aria-labelledby="dropdownMenuCenterInfo">
-                            <li><a href="/pages/pico-services">SERVICES</a></li>
+                            <!--<li><a href="/pages/pico-services">SERVICES</a></li>-->
                             <li><a href="/pages/pico-contact-us">CONTACT</a></li>
                         </ul>
                     </div>
