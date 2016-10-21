@@ -208,24 +208,15 @@ function renderStoreDetailsHours(container, template, collection){
                 break;
             
         }
-        // var open_time = new Date (val.open_time);
-        // var close_time = new Date (val.close_time);
-        // val.open_time = convert_hour(open_time);
-        // val.close_time = convert_hour(close_time);
-        // if (val.is_closed == true){
-        //     val.hour_string = "Closed"
-        // } else {
-        //     val.hour_string = val.open_time + " - " + val.close_time;
-        // }
-        
-        var open_time = moment(val.open_time).tz(getPropertyTimeZone());
-        var close_time = moment(val.close_time).tz(getPropertyTimeZone());
+        var open_time = new Date (val.open_time);
+        var close_time = new Date (val.close_time);
+        val.open_time = convert_hour(open_time);
+        val.close_time = convert_hour(close_time);
         if (val.is_closed == true){
             val.hour_string = "Closed"
         } else {
-            val.hour_string = open_time.format("h:mma") + " - " + close_time.format("h:mma");
-        } 
-        
+            val.hour_string = val.open_time + " - " + val.close_time;
+        }
         var rendered = Mustache.render(template_html,val);
         item_rendered.push(rendered);
     });
@@ -243,41 +234,33 @@ function renderPromotions(container, template, collection){
             val.store_detail_btn = store_details.slug ;
             val.store_name = store_details.name;
         }
-        else {
+        else{
             val.store_name = site_json.name;
         }
         
-        if (val.promo_image_url_abs.indexOf('missing.png') > 0){
+        if(val.promo_image_url_abs.indexOf('missing.png') > 0){
             val.promo_image_url_abs  = site_json.default_image ;
             // val.promo_image = "display:none";
             // val.full_width = "width:100%"
         }
-        if (val.description.length > 200){
+        
+        
+        if(val.description.length > 200){
             val.description_short = val.description.substring(0, 200) + "..."
         }
-        else {
+        else{
             val.description_short = val.description
         }
-        // var show_date = new Date (val.show_on_web_date + site_json.time_zone);
-        // start = new Date (val.start_date + site_json.time_zone);
-        // end = new Date (val.end_date + site_json.time_zone);
+        
+        var show_date = new Date (val.show_on_web_date + site_json.time_zone);
+        start = new Date (val.start_date + site_json.time_zone);
+        end = new Date (val.end_date + site_json.time_zone);
     
-        // if (start.toDateString() == end.toDateString()) {
-        //     val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
-        // } else {
-        //     val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
-        // }
-        
-        var show_date = moment(val.show_on_web_date).tz(getPropertyTimeZone);
-        var start = moment(val.start_date).tz(getPropertyTimeZone());
-        var end = moment(val.end_date).tz(getPropertyTimeZone());
-        if (start.format("DMY") == end.format("DMY")){
-        	val.dates = start.format("MMM D");
+        if (start.toDateString() == end.toDateString()) {
+            val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
+        } else {
+            val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
         }
-        else {
-        	val.dates = "Starts " + start.format("MMM D") + " - Ends " + end.format("MMM D");
-        }
-        
         var rendered = Mustache.render(template_html,val);
         item_rendered.push(rendered);
     });
@@ -296,41 +279,37 @@ function renderPromotionDetails(container, template, collection){
             val.store_detail_btn = store_details.slug ;
             val.store_name = store_details.name;
         }
-        else {
+        else{
             val.store_name = site_json.name;
         }
-        if (val.promo_image_url_abs.indexOf('missing.png') > 0){
+        
+        if(val.promo_image_url_abs.indexOf('missing.png') > 0){
             val.promo_image_url_abs  = site_json.default_image ;
             val.promo_image = "display:none";
             val.full_width = "width:100%"
         }
-        if (val.promo_image_url_abs.indexOf('missing.png') > -1){
+        
+        if(val.promo_image_url_abs.indexOf('missing.png') > -1){
             val.promo_image_show="display:none";
         }
-        // var show_date = new Date (val.show_on_web_date + site_json.time_zone);
-        // start = new Date (val.start_date + site_json.time_zone);
-        // end = new Date (val.end_date + site_json.time_zone);
-        // if (start.toDateString() == end.toDateString()) {
-        //     val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
-        // } else {
-        //     val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
-        // }
         
-        var show_date = moment(val.show_on_web_date).tz(getPropertyTimeZone);
-        var start = moment(val.start_date).tz(getPropertyTimeZone());
-        var end = moment(val.end_date).tz(getPropertyTimeZone());
-        if (start.format("DMY") == end.format("DMY")){
-        	val.dates = start.format("MMM D");
+       var show_date = new Date (val.show_on_web_date + site_json.time_zone);
+        start = new Date (val.start_date + site_json.time_zone);
+        end = new Date (val.end_date + site_json.time_zone);
+    
+        if (start.toDateString() == end.toDateString()) {
+            val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
+        } else {
+            val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
         }
-        else {
-        	val.dates = "Starts " + start.format("MMM D") + " - Ends " + end.format("MMM D");
-        }
-
         var rendered = Mustache.render(template_html,val);
         item_rendered.push(rendered);
     });
     $(container).html(item_rendered.join(''));
 }
+
+
+
 
 function renderEvents(container, template, collection){
     var item_list = [];
@@ -344,39 +323,32 @@ function renderEvents(container, template, collection){
             val.store_name = store_details.name;
             val.image_url = store_details.store_front_url_abs;
         }
-        else {
+        else{
             val.store_name = site_json.name;
             val.image_url = site_json.default_image;
         }
+        
         if(val.event_image_url_abs.indexOf('missing.png') > 0){
             val.event_image_url_abs  = site_json.default_image ;
             val.promo_image = "display:none";
             val.full_width = "width:100%"
         }
-        if (val.description.length > 200){
+        
+        if(val.description.length > 200){
             val.description_short = val.description.substring(0, 200) + "..."
         }
-        else {
+        else{
             val.description_short = val.description
         }
-        // var show_date = new Date (val.show_on_web_date + site_json.time_zone);
-        // start = new Date (val.start_date + site_json.time_zone);
-        // end = new Date (val.end_date + site_json.time_zone);
-    
-        // if (start.toDateString() == end.toDateString()) {
-        //     val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
-        // } else {
-        //     val.dates = (get_month(start.getMonth()))+" "+(start.getDate())+" - "+get_month(end.getMonth())+" "+end.getDate();    
-        // }
         
-        var show_date = moment(val.show_on_web_date).tz(getPropertyTimeZone);
-        var start = moment(val.start_date).tz(getPropertyTimeZone());
-        var end = moment(val.end_date).tz(getPropertyTimeZone());
-        if (start.format("DMY") == end.format("DMY")){
-        	val.dates = start.format("MMM D");
-        }
-        else {
-        	val.dates = start.format("MMM D") + " - " + end.format("MMM D");
+        var show_date = new Date (val.show_on_web_date + site_json.time_zone);
+        start = new Date (val.start_date + site_json.time_zone);
+        end = new Date (val.end_date + site_json.time_zone);
+    
+        if (start.toDateString() == end.toDateString()) {
+            val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
+        } else {
+            val.dates = (get_month(start.getMonth()))+" "+(start.getDate())+" - "+get_month(end.getMonth())+" "+end.getDate();    
         }
         var rendered = Mustache.render(template_html,val);
         item_rendered.push(rendered);
@@ -397,41 +369,34 @@ function renderEventDetails(container, template, collection){
             val.store_detail_btn = store_details.slug ;
             val.store_name = store_details.name;
         }
-        else {
+        else{
             val.store_name = site_json.name;
         }
-        if (val.event_image_url_abs.indexOf('missing.png') > 0){
+        
+        if(val.event_image_url_abs.indexOf('missing.png') > 0){
             val.event_image_url_abs  = site_json.default_image ;
             val.promo_image = "display:none";
             val.full_width = "width:100%"
         }
-        if (val.event_image_url_abs.indexOf('missing.png') > -1){
+        
+        if(val.event_image_url_abs.indexOf('missing.png') > -1){
             val.promo_image_show="display:none";
         }
-        if (val.description.length > 200){
+        if(val.description.length > 200){
             val.description_short = val.description.substring(0, 200) + "..."
         }
-        else {
+        else{
             val.description_short = val.description
         }
-        // var show_date = new Date (val.show_on_web_date + site_json.time_zone);
-        // start = new Date (val.start_date + site_json.time_zone);
-        // end = new Date (val.end_date + site_json.time_zone);
-    
-        // if (start.toDateString() == end.toDateString()) {
-        //     val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
-        // } else {
-        //     val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
-        // }
         
-        var show_date = moment(val.show_on_web_date).tz(getPropertyTimeZone);
-        var start = moment(val.start_date).tz(getPropertyTimeZone());
-        var end = moment(val.end_date).tz(getPropertyTimeZone());
-        if (start.format("DMY") == end.format("DMY")){
-        	val.dates = start.format("MMM D");
-        }
-        else {
-        	val.dates = "Starts " + start.format("MMM D") + " - Ends " + end.format("MMM D");
+        var show_date = new Date (val.show_on_web_date + site_json.time_zone);
+        start = new Date (val.start_date + site_json.time_zone);
+        end = new Date (val.end_date + site_json.time_zone);
+    
+        if (start.toDateString() == end.toDateString()) {
+            val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
+        } else {
+            val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
         }
         var rendered = Mustache.render(template_html,val);
         item_rendered.push(rendered);
@@ -444,40 +409,30 @@ function renderJobs(container, template, collection){
     var item_rendered = [];
     var template_html = $(template).html();
     Mustache.parse(template_html); 
-    $.each ( collection , function( key, val ) {
-        if (val.jobable_type == "Store"){
+    $.each( collection , function( key, val ) {
+        if(val.jobable_type == "Store"){
             val.store_name = getStoreDetailsByID(val.jobable_id).name;
             val.store_detail_btn = getStoreDetailsByID(val.jobable_id).slug;
         }
-        else {
+        else{
             val.store_name = site_json.name;
         }
-        if (val.description.length > 200){
+        if(val.description.length > 200){
             val.description_short = val.description.substring(0, 200) + "..."
         }
-        else {
+        else{
             val.description_short = val.description
         }
-        // var show_date = new Date (val.show_on_web_date + site_json.time_zone);
-        // val.published_on = get_month(show_date.getMonth()) + " " + show_date.getDate();
-        // var show_date = new Date (val.show_on_web_date + site_json.time_zone);
-        // start = new Date (val.start_date + site_json.time_zone);
-        // end = new Date (val.end_date + site_json.time_zone);
+        var show_date = new Date (val.show_on_web_date + site_json.time_zone);
+        val.published_on = get_month(show_date.getMonth()) + " " + show_date.getDate();
+        var show_date = new Date (val.show_on_web_date + site_json.time_zone);
+        start = new Date (val.start_date + site_json.time_zone);
+        end = new Date (val.end_date + site_json.time_zone);
     
-        // if (start.toDateString() == end.toDateString()) {
-        //     val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
-        // } else {
-        //     val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
-        // }
-        
-        var show_date = moment(val.show_on_web_date).tz(getPropertyTimeZone);
-        var start = moment(val.start_date).tz(getPropertyTimeZone());
-        var end = moment(val.end_date).tz(getPropertyTimeZone());
-        if (start.format("DMY") == end.format("DMY")){
-        	val.dates = start.format("MMM D");
-        }
-        else {
-        	val.dates = "Starts " + start.format("MMM D") + " - Ends " + end.format("MMM D");
+        if (start.toDateString() == end.toDateString()) {
+            val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
+        } else {
+            val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
         }
         
         var rendered = Mustache.render(template_html,val);
@@ -507,26 +462,15 @@ function renderJobDetails(container, template, collection){
             val.description_short = val.description
         }
         
-        // var show_date = new Date (val.show_on_web_date + site_json.time_zone);
-        // start = new Date (val.start_date + site_json.time_zone);
-        // end = new Date (val.end_date + site_json.time_zone);
+        var show_date = new Date (val.show_on_web_date + site_json.time_zone);
+        start = new Date (val.start_date + site_json.time_zone);
+        end = new Date (val.end_date + site_json.time_zone);
     
-        // if (start.toDateString() == end.toDateString()) {
-        //     val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
-        // } else {
-        //     val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
-        // }
-        
-        var show_date = moment(val.show_on_web_date).tz(getPropertyTimeZone);
-        var start = moment(val.start_date).tz(getPropertyTimeZone());
-        var end = moment(val.end_date).tz(getPropertyTimeZone());
-        if (start.format("DMY") == end.format("DMY")){
-        	val.dates = start.format("MMM D");
+        if (start.toDateString() == end.toDateString()) {
+            val.dates = (get_month(start.getMonth()))+" "+(start.getDate());    
+        } else {
+            val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
         }
-        else {
-        	val.dates = "Starts " + start.format("MMM D") + " - Ends " + end.format("MMM D");
-        }
-        
         var rendered = Mustache.render(template_html,val);
         item_rendered.push(rendered);
     });
@@ -539,18 +483,13 @@ function renderHours(container, template, collection){
     var template_html = $(template).html();
     Mustache.parse(template_html);   // optional, speeds up future uses
     $.each( collection , function( key, val ) {
-        // var d = new Date();
-        // var open_time = new Date (val.open_time);
-        // var close_time = new Date (val.close_time);
-        // val.open_time = convert_hour(open_time);
-        // val.close_time = convert_hour(close_time);    
-        // val.hour = val.open_time+ " - " + val.close_time;
+        var d = new Date();
         
-        var d = moment();
-        var open_time = moment(val.open_time).tz(getPropertyTimeZone());
-        var close_time = moment(val.close_time).tz(getPropertyTimeZone());
-        val.hour = open_time.format("h:mma") + " - " + close_time.format("h:mma");
-        
+        var open_time = new Date (val.open_time);
+        var close_time = new Date (val.close_time);
+        val.open_time = convert_hour(open_time);
+        val.close_time = convert_hour(close_time);    
+        val.hour = val.open_time+ " - " + val.close_time;
         var rendered = Mustache.render(template_html,val);
         item_rendered.push(rendered);
     });
