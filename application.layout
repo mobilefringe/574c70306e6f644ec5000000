@@ -60,7 +60,7 @@
     
     <!-- Site data -->
     <script>
-        setEndPoint('//pico.mallmaverick.com/api/v3/pico/all.json');
+        setEndPoint('//twinpines.mallmaverick.com/api/v3/twinpines/all.json');
     </script>
 </head>
 
