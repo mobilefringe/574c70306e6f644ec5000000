@@ -470,7 +470,7 @@ function renderJobs(container, template, collection){
         //     val.dates = "Starts " + (get_month(start.getMonth()))+" "+(start.getDate())+" - Ends "+get_month(end.getMonth())+" "+end.getDate();    
         // }
         var show_date = moment(val.show_on_web_date).tz(getPropertyTimeZone());
-        val.published_on = moment(show_date.month().date());
+        val.published_on = show_date.moment().month().date();
         var show_date = moment(val.show_on_web_date).tz(getPropertyTimeZone());
         var start = moment(val.start_date).tz(getPropertyTimeZone());
         var end = moment(val.end_date).tz(getPropertyTimeZone());
