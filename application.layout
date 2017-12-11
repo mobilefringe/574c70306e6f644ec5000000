@@ -166,7 +166,7 @@
     <section class="copyright_footer main_container">
         <div class="text-center visible_phone">
             <p class="footer_text">
-                © Copyright <span id="current_year" class="current_year"></span> Pico Rivera Towne Center
+                &copy; Copyright <span id="current_year" class="current_year"></span> Pico Rivera Towne Center
             </p>
             <p class="footer_text">
                 8982 Washington Blvd, Pico Rivera, CA 90660
@@ -183,7 +183,7 @@
         <div class="row hidden_phone">
             <div class="col-md-6">
                 <p class="footer_text">
-                    © Copyright <span id="current_year" class="current_year"></span> Pico Rivera Towne Center
+                    &copy; Copyright <span id="current_year" class="current_year"></span> Pico Rivera Towne Center
                 </p>
                 <p class="footer_text">
                     Powered by <a href="//mallmaverick.com" target="_blank">Mall Maverick</a>
