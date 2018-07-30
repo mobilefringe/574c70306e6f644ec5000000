@@ -56,6 +56,9 @@
     
     <!-- Site data -->
     <script>
+    $.getJSON("//clairemont.mallmaverick.com/api/v4/clairemont/subcategories.json?bust=true").done(function(data){
+            
+        });
         setEndPoint('//pico.mallmaverick.com/api/v4/pico/all.json');
     </script>
 </head>
